@@ -20,34 +20,34 @@ class BotKeyboard:
     def main_menu():
         keyboard = types.InlineKeyboardMarkup()
         keyboard.add(
-            types.InlineKeyboardButton(text='🔁 System Info', callback_data='system'),
-            types.InlineKeyboardButton(text='♻️ Restart Xray', callback_data='restart'))
+            types.InlineKeyboardButton(text='🔁 Системная информация', callback_data='system'),
+            types.InlineKeyboardButton(text='♻️ Перезапустить Xray', callback_data='restart'))
         keyboard.add(
-            types.InlineKeyboardButton(text='👥 Users', callback_data='users:1'),
-            types.InlineKeyboardButton(text='✏️ Edit All Users', callback_data='edit_all'))
+            types.InlineKeyboardButton(text='👥 Пользователи', callback_data='users:1'),
+            types.InlineKeyboardButton(text='✏️ Редактировать всех пользователей', callback_data='edit_all'))
         keyboard.add(
-            types.InlineKeyboardButton(text='➕ Create User From Template', callback_data='template_add_user'))
+            types.InlineKeyboardButton(text='➕ Создать пользователя из Шаблона', callback_data='template_add_user'))
         keyboard.add(
-            types.InlineKeyboardButton(text='➕ Bulk User From Template', callback_data='template_add_bulk_user'))
+            types.InlineKeyboardButton(text='➕ Множество пользователей из Шаблона', callback_data='template_add_bulk_user'))
         keyboard.add(
-            types.InlineKeyboardButton(text='➕ Create User', callback_data='add_user'))
+            types.InlineKeyboardButton(text='➕ Создать пользователя', callback_data='add_user'))
         keyboard.add(
-            types.InlineKeyboardButton(text='➕ Create Bulk User', callback_data='add_bulk_user'))
+            types.InlineKeyboardButton(text='➕ Создать множество пользователей', callback_data='add_bulk_user'))
         return keyboard
 
     @staticmethod
     def edit_all_menu():
         keyboard = types.InlineKeyboardMarkup()
         keyboard.add(
-            types.InlineKeyboardButton(text='🗑 Delete Expired', callback_data='delete_expired'),
-            types.InlineKeyboardButton(text='🗑 Delete Limited', callback_data='delete_limited'))
+            types.InlineKeyboardButton(text='🗑 Удалить просроченный', callback_data='delete_expired'),
+            types.InlineKeyboardButton(text='🗑 Удалить ограниченный', callback_data='delete_limited'))
         keyboard.add(
-            types.InlineKeyboardButton(text='🔋 Data (➕|➖)', callback_data='add_data'),
-            types.InlineKeyboardButton(text='📅 Time (➕|➖)', callback_data='add_time'))
+            types.InlineKeyboardButton(text='🔋 Дата (➕|➖)', callback_data='add_data'),
+            types.InlineKeyboardButton(text='📅 Время (➕|➖)', callback_data='add_time'))
         keyboard.add(
-            types.InlineKeyboardButton(text='➕ Add Inbound', callback_data='inbound_add'),
-            types.InlineKeyboardButton(text='➖ Remove Inbound', callback_data='inbound_remove'))
-        keyboard.add(types.InlineKeyboardButton(text='🔙 Back', callback_data='cancel'))
+            types.InlineKeyboardButton(text='➕ Добавить Сеть', callback_data='inbound_add'),
+            types.InlineKeyboardButton(text='➖ Удалить Сеть', callback_data='inbound_remove'))
+        keyboard.add(types.InlineKeyboardButton(text='🔙 Назад', callback_data='cancel'))
         return keyboard
 
     @staticmethod
@@ -55,7 +55,7 @@ class BotKeyboard:
         keyboard = types.InlineKeyboardMarkup()
         for inbound in inbounds:
             keyboard.add(types.InlineKeyboardButton(text=inbound, callback_data=f'confirm_{action}:{inbound}'))
-        keyboard.add(types.InlineKeyboardButton(text='🔙 Back', callback_data='cancel'))
+        keyboard.add(types.InlineKeyboardButton(text='🔙 Назад', callback_data='cancel'))
         return keyboard
 
     @staticmethod
@@ -73,7 +73,7 @@ class BotKeyboard:
 
         keyboard.add(
             types.InlineKeyboardButton(
-                text='🔙 Back',
+                text='🔙 Назад',
                 callback_data=f'user:{username}' if username else 'cancel'))
         return keyboard
 
@@ -82,10 +82,10 @@ class BotKeyboard:
         keyboard = types.InlineKeyboardMarkup()
 
         keyboard.add(types.InlineKeyboardButton(
-            text='🔡 Random Username',
+            text='🔡 Случайное имя пользователя',
             callback_data=f'random:{template_id}'))
         keyboard.add(types.InlineKeyboardButton(
-            text='🔙 Cancel',
+            text='🔙 Отменить',
             callback_data='cancel'))
         return keyboard
 
@@ -94,7 +94,7 @@ class BotKeyboard:
         keyboard = types.InlineKeyboardMarkup()
         keyboard.add(
             types.InlineKeyboardButton(
-                text='❌ Disable' if user_info['status'] == 'active' else '✅ Activate',
+                text='❌ Отключен' if user_info['status'] == 'active' else '✅ Активирован',
                 callback_data=f"{'suspend' if user_info['status'] == 'active' else 'activate'}:{user_info['username']}"
             ),
             types.InlineKeyboardButton(
@@ -104,32 +104,32 @@ class BotKeyboard:
         )
         keyboard.add(
             types.InlineKeyboardButton(
-                text='🚫 Revoke Sub',
+                text='🚫 Отозвать подписку',
                 callback_data=f"revoke_sub:{user_info['username']}"),
             types.InlineKeyboardButton(
-                text='✏️ Edit',
+                text='✏️ Редактировать',
                 callback_data=f"edit:{user_info['username']}"))
         keyboard.add(
             types.InlineKeyboardButton(
-                text='📝 Edit Note',
+                text='📝 Редактировать Заметку',
                 callback_data=f"edit_note:{user_info['username']}"),
             types.InlineKeyboardButton(
-                text='📡 Links',
+                text='📡 Связи',
                 callback_data=f"links:{user_info['username']}"))
         keyboard.add(
             types.InlineKeyboardButton(
-                text='🔁 Reset usage',
+                text='🔁 Сброс использования',
                 callback_data=f"reset_usage:{user_info['username']}"
             ),
             types.InlineKeyboardButton(
-                text='🔋 Charge',
+                text='🔋 Заряжать',
                 callback_data=f"charge:{user_info['username']}"
             )
         )
         if with_back:
             keyboard.add(
                 types.InlineKeyboardButton(
-                    text='🔙 Back',
+                    text='🔙 Назад',
                     callback_data=f'users:{page}'
                 )
             )
@@ -141,17 +141,17 @@ class BotKeyboard:
 
         keyboard.add(
             types.InlineKeyboardButton(
-                text="🟢 active",
+                text="🟢 активный",
                 callback_data='status:active'
             ),
             types.InlineKeyboardButton(
-                text="🟣 onhold",
+                text="🟣 удерживание",
                 callback_data='status:onhold'
             )
         )
         keyboard.add(
             types.InlineKeyboardButton(
-                text='🔙 Back',
+                text='🔙 Назад',
                 callback_data='cancel'
             )
         )
@@ -163,17 +163,17 @@ class BotKeyboard:
 
         keyboard.add(
             types.InlineKeyboardButton(
-                text="🖼 Configs QRcode",
+                text="🖼 Конфигурации QR-кода",
                 callback_data=f'genqr:configs:{username}'
             ),
             types.InlineKeyboardButton(
-                text="🚀 Sub QRcode",
+                text="🚀 Дополнительный QR-код",
                 callback_data=f'genqr:sub:{username}'
             )
         )
         keyboard.add(
             types.InlineKeyboardButton(
-                text='🔙 Back',
+                text='🔙 Назад',
                 callback_data=f'user:{username}'
             )
         )
@@ -184,7 +184,7 @@ class BotKeyboard:
         keyboard = types.InlineKeyboardMarkup()
         if sub_url[:4] == 'http':
             keyboard.add(types.InlineKeyboardButton(
-                text='🚀 Subscription Page',
+                text='🚀 Страница подписки',
                 url=sub_url))
         return keyboard
 
@@ -193,12 +193,12 @@ class BotKeyboard:
         keyboard = types.InlineKeyboardMarkup()
         keyboard.add(
             types.InlineKeyboardButton(
-                text='Yes',
+                text='Да',
                 callback_data=f"confirm:{action}:{username}"
             ),
             types.InlineKeyboardButton(
-                text='No',
-                callback_data=f"cancel"
+                text='Нет',
+                callback_data=f"отменить"
             )
         )
         return keyboard
@@ -275,7 +275,7 @@ class BotKeyboard:
                 )
         keyboard.add(
             types.InlineKeyboardButton(
-                text='🔙 Back',
+                text='🔙 Назад',
                 callback_data='cancel'
             )
         )
@@ -353,13 +353,13 @@ class BotKeyboard:
 
         keyboard.add(
             types.InlineKeyboardButton(
-                text='Done',
+                text='Готово',
                 callback_data='confirm:edit_user' if action == "edit" else 'confirm:add_user'
             )
         )
         keyboard.add(
             types.InlineKeyboardButton(
-                text='Cancel',
+                text='Отменить',
                 callback_data=f'user:{username}' if action == "edit" else 'cancel'
             )
         )
